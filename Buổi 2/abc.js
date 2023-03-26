@@ -14,7 +14,6 @@ console.log(arrSquare);
 const arrOdds = arrX.filter((num) => {
     return (num %2 == 1);
 })
-
 console.log(arrOdds);
 //bài 4
 function filterRange(arr, a ,b) {
