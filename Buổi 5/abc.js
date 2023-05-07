@@ -53,21 +53,25 @@
 
 //bài 1
 const m = [1,2,3,4,5,6,"hh", "9",80,100]
-
-
-
-
-
-
-
+const a = m.filter(Number).map(Number).map(x => Math.pow(x,2));
+console.log(a);
+// xóa phần tử và nhân phần tử trg mảng
+//Bài 2
+const stringA = "high knowledge, high return";
+let arry = stringA.split(" ").map(word => word.toLowerCase());
+console.log(arry);
 //Bài 3
 const arr1 = [1,2,4,5,6]; 
-const arr2 = [1,6,8,9,0]
-
-
-
-
+const arr2 = [1,6,8,9,0];
+let newarray = arr1.filter((x)=> arr2.includes(x))
+console.log(newarray)
 //Bài 4
 const arr = [1,54,6,7]
-const newArr = arr.map(nArr => arr + 5)
-console.log(newArr)
+//Bài 5
+const M = [1,2,4,5,6,7];
+const n = [3,5,675,8,96];
+const duplicatedList = [1,8,10,96,7];
+
+let arr3 = [...M,...n];
+let arrRS = arr3.filter(item => !duplicatedList.includes(item));
+console.log(arrRS);
