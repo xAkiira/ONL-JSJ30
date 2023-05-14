@@ -1,0 +1,22 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+.dtdn{
+    display: flex;
+}
+
+.phut_giay{
+    padding-left: 40px;
+    padding-right: 20px;
+    text-align: center;
+    position: relative;
+}
+
+.btn{
+    display: block;
+    border-radius: 10px;
+    text-align: center;
+    position: relative;
+}
