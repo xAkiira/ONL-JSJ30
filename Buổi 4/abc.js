@@ -77,29 +77,25 @@ class Register {
       const userName = this.$nameInputTxt.value;
       
       if(email == "") {
-        prompt("Email cannot be empty!")
-        return
-      }
-
-      if(pass.length < 6) {
-        prompt("Pass must be least 6 letters!")
-        return
-      }
-
-      if(confirmPassInputPass == "") {
-        prompt("confirmPassInputPass cannot be empty!")
-        return
-      }
-
-      if(userName == "") {
-        prompt("userName cannot be empty!")
-        return
-      }
-
-      if(pas !=  "") {
-        prompt("confirmPassInputPass cannot be empty!")
-        return
-      }
+        alert("Email cannot be empty!");
+        return;
+       }
+       if(password.length < 6) {
+        alert("Password must be least 6 letters!");
+        return;
+       }
+       if(userName == "") {
+        alert("Username cannot be empty!");
+        return;
+       }
+       if(confirmPass == "") {
+        alert("Confirm your password!");
+        return;
+       }
+       if(password != confirmPass) {
+        alert("Your password not match!");
+        return;
+       }
 
 const auth = getAuth();
 createUserWithEmailAndPassword(auth, email, password)

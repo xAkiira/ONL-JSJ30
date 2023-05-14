@@ -23,12 +23,12 @@ class Login {
 
     handleSubmit = (e) => {
         if(email == "") {
-            prompt("Email cannot be empty!")
+            alert("Email cannot be empty!")
             return
           }
     
           if(pass.length < 6) {
-            prompt("Pass must be least 6 letters!")
+            alert("Pass must be least 6 letters!")
             return
           }
 const auth = getAuth();
