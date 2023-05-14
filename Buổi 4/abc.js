@@ -1,51 +1,9 @@
-// const regContainer = document.createElement("div");
+import Login from "./login";
+import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-auth.js";
 
-// const title = document.createElement("h3");
-
-// title.innerHTML = "Create your account";
-
-// regContainer.classList.add("nav");
-
-// const emailInput = document.createElement("Input");
-// emailInput.placeholder = "Enter your email";
-
-// const nameInput = document.createElement("Input");
-// nameInput.placeholder = "Enter your name";
-
-// const passInput = document.createElement("input");
-// passInput.type = "password";
-// passInput.placehoder = "Enter your password";
-
-// const confirmInput = document.createElement("input");
-// confirmInput.type = "password";
-// confirmInput.placehoder = "Enter your password";
-
-// const submitButton = document.createElement("input");
-// submitButton.type = "submit";
-// submitButton.value = "Register";
-
-// const linkTologin = document.createElement("a");
-// linkTologin.innerHTML = "You already have an account?";
-
-// regContainer.appendChild(title);
-// regContainer.appendChild(emailInput);
-// regContainer.appendChild(nameInput);
-// regContainer.appendChild(passInput);
-// regContainer.appendChild(confirmInput);
-// regContainer.appendChild(submitButton);
-// regContainer.appendChild(linkTologin);
-
-// const regFrom = document.createElement("form");
-// regFrom.appendChild(regContainer);
-
-// const app = document.getElementById("app")
-// app.appendChild(regFrom)
-
-import Login form "./xyz";
-
-class Hegister {
+class Register {
     $containerDiv
-    $titleHeader
+    $titleH2
     $signupForm
     $emailInputEmail
     $nameInputTxt
@@ -54,28 +12,43 @@ class Hegister {
     $submitBtn
     $gotoSigninLink
 
-    constructor() {
+    constructor () {
         this.$emailInputEmail = document.createElement("input"); // <input> </input>
-        this.$emailInputEmail.type = "email"; // <input type="email"> </input>
-        this.$emailInputEmail.placeholder = "Enter your email ..."; // <input type="email" placeholder="Enter your email ..."> </input>
+        this.$emailInputEmail.type = "email"; 
+        this.$emailInputEmail.placeholder = "Enter your email..."
 
-        this.$nameInputTxt = document.createElement("input");
+        this.$nameInputTxt = document.createElement("input")
         this.$nameInputTxt.type = "text";
-        this.$nameInputTxt.placeholder = "Enter your name ...";
+        this.$nameInputTxt.placeholder = "Enter your name... "
 
-        this.$passInputPass= document.createElement("input");
-        this.$nameInputTxt.type = "text";
-        this.$nameInputTxt.placeholder = "Enter your name ...";
+        this.$passInputPass = document.createElement("input")
+        this.$passInputPass.type = "password";
+        this.$passInputPass.placeholder = "Enter your password ..."
 
-        this.$gotoSigninLink.addEventListener("click",this.gotoSignin);
+        this.$confirmPassInputPass = document.createElement("input")
+        this.$confirmPassInputPass.type = "password";
+        this.$confirmPassInputPass.placeholder = "Confirm your password... "
 
-        this.$containerDiv = document.createElement("div");
-        this.$containerDiv.classList.add("center","app");
 
-        this.$titleHeader = document.createElement("h2");
-        this.$titleHeader.innerHTML = "Create your account"
+        this.$submitBtn = document.createElement("button")
+        this.$submitBtn.type = "submit";
+        this.$submitBtn.innerHTML = "Register"
+        this.$submitBtn.addEventListener("click", this.handleSubmit);
+
+        this.$gotoSigninLink = document.createElement("a")
+        this.$gotoSigninLink.innerHTML  = "You already have account? Signin now";
+        this.$gotoSigninLink.addEventListener("click", this.gotoSignin)
+
+
+        this.$containerDiv = document.createElement("div")
+        this.$containerDiv.classList.add("center","app")
+
+        this.$titleH2 = document.createElement("h2")
+        this.$titleH2.innerHTML = "Create your account"
 
         this.$signupForm = document.createElement("form")
+
+
     }
 
     initRender = (container) => {
@@ -85,15 +58,48 @@ class Hegister {
         this.$signupForm.appendChild(this.$confirmPassInputPass);
         this.$signupForm.appendChild(this.$submitBtn);
 
-        this.$containerDiv.appendChild(this.$titleHeader);
-        this.$containerDiv.appendChild(this.$signupForm);
-        this.$containerDiv.appendChild(this.$gotoSigninLink);
+        this.$containerDiv.appendChild(this.$titleH2); 
+        this.$containerDiv.appendChild(this.$signupForm); 
+        this.$containerDiv.appendChild(this.$gotoSigninLink)
+
 
         container.appendChild(this.$containerDiv)
+
+
     }
 
     handleSubmit = (e) => {
-        import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+      //validation
+      e.preventDefault(); // cản lại các sự mặc định để check xem có đúng yêu cầu nhập dữ liệu chx 
+      const email = this.$emailInputEmail.value;
+      const pass = this.$passInputPass.value;
+      const confirmPassInputPass = this.$confirmPassInputPass.value;
+      const userName = this.$nameInputTxt.value;
+      
+      if(email == "") {
+        prompt("Email cannot be empty!")
+        return
+      }
+
+      if(pass.length < 6) {
+        prompt("Pass must be least 6 letters!")
+        return
+      }
+
+      if(confirmPassInputPass == "") {
+        prompt("confirmPassInputPass cannot be empty!")
+        return
+      }
+
+      if(userName == "") {
+        prompt("userName cannot be empty!")
+        return
+      }
+
+      if(pas !=  "") {
+        prompt("confirmPassInputPass cannot be empty!")
+        return
+      }
 
 const auth = getAuth();
 createUserWithEmailAndPassword(auth, email, password)
@@ -105,13 +111,20 @@ createUserWithEmailAndPassword(auth, email, password)
   .catch((error) => {
     const errorCode = error.code;
     const errorMessage = error.message;
+    const alert = prompt(errorMessage);
     // ..
   });
     }
 
+
+
+
+
     gotoSignin = () => {
         const login = new Login();
-        // change active section
-    }
 
+
+    }
 }
+
+export default Register;
